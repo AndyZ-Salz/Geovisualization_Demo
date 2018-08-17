@@ -3,7 +3,7 @@
 Final project for IP project 2018S
 
 ## Coder
-homepage & map1: Kaiyue Zang
+homepage & map1: Kaiyue Zang   
 map2: Xiao Zhang
 
 ## Entry

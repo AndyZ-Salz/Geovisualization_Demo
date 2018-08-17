@@ -15,9 +15,6 @@ body {
 }
 
 
-
-
-
 /*Set label's style*/
 
 .top {
@@ -29,16 +26,17 @@ body {
     align-items: center;
 }
 
-.bottom {}
+.bottom {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
 
 .label {
     background: grey;
     height: 50px;
     width: 1100px;
 }
-
-
-
 
 
 /*Set mainpart's style*/
@@ -50,9 +48,6 @@ body {
     height: 480px;
     padding: 10px;
 }
-
-
-
 
 
 /*Margin set*/
@@ -81,7 +76,6 @@ body {
 }
 
 
-
 /*Leftside setting*/
 
 #leftBody {
@@ -94,17 +88,22 @@ body {
 }
 
 
-
-
 /*Rightside setting*/
 
 #rightBody {
-/*    background: yellow;*/
+    /*    background: yellow;*/
     height: 100%;
     width: 100%;
 }
 
+.mapName{
+    color:white;
+    text-decoration:none;
+    font-size: 20px;
+}
+
 .box {
+
     background: gray;
     float: left;
     border: thin solid #000000;
@@ -112,11 +111,15 @@ body {
     width: 150px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     margin-top: 45px;
     margin-left: 35px;
 }
 
-#box1 {}
+#box1 {
+    background-image:url(../image/map1.png);
+    background-size:100% 100%;
+    
+}
 
 #box2 {}

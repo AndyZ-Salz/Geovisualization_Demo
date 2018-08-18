@@ -13,3 +13,9 @@ https://andyz-salz.github.io/PLUS_IP_Final_K.Z_X.Z/Homepage/index.html
 **Data Set:** "filtered_hurricane_harvey_15"  offered by *Dr. Bernd Resch*      
 **Data Base:** Postgres with PostGIS   
 **Data Release:** GeoServer
+
+## How to build
+**see:**  
+map1/README.md  
+map2/README.md 
+

@@ -1,20 +1,20 @@
 {
   "type": "scene",
   "properties": {
-    "height": 58.57142857142857,
+    "height": 65.5323819978046,
     "width": 100.0,
     "baseExtent": [
-      429656.3661492041,
-      3052546.329253976,
-      1223643.036461706,
-      3517595.664722727
+      564482.5994212623,
+      3117414.47768786,
+      1069689.2818222789,
+      3448488.4506773297
     ],
     "crs": "EPSG:32614",
     "proj": "+proj=utm +zone=14 +datum=WGS84 +units=m +no_defs",
     "rotation": 0,
     "wgs84Center": {
-      "lat": 29.65275692559946,
-      "lon": -95.62588408659774
+      "lat": 29.63613601970638,
+      "lon": -95.72515502938344
     },
     "zExaggeration": 1.0,
     "zShift": 0.0
@@ -24,17 +24,41 @@
       "type": "layer",
       "id": 0,
       "properties": {
-        "name": "filtered_hurricane_harvey_15",
+        "name": "day0825",
         "queryable": 1,
         "visible": true,
-        "type": "point",
-        "objType": "Sphere"
+        "type": "polygon",
+        "objType": "Extruded"
       },
       "data": {
         "materials": [
           {
             "type": 0,
-            "c": 12011595
+            "c": 12050943
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          },
+          {
+            "type": 0,
+            "c": 825087
           }
         ],
         "blocks": [
@@ -43,396 +67,6 @@
           },
           {
             "url": "./data/index/L0_GEOM1.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM2.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM3.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM4.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM5.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM6.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM7.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM8.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM9.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM10.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM11.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM12.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM13.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM14.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM15.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM16.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM17.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM18.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM19.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM20.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM21.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM22.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM23.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM24.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM25.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM26.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM27.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM28.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM29.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM30.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM31.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM32.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM33.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM34.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM35.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM36.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM37.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM38.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM39.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM40.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM41.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM42.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM43.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM44.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM45.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM46.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM47.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM48.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM49.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM50.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM51.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM52.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM53.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM54.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM55.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM56.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM57.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM58.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM59.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM60.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM61.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM62.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM63.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM64.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM65.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM66.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM67.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM68.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM69.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM70.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM71.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM72.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM73.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM74.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM75.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM76.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM77.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM78.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM79.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM80.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM81.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM82.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM83.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM84.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM85.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM86.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM87.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM88.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM89.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM90.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM91.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM92.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM93.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM94.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM95.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM96.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM97.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM98.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM99.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM100.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM101.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM102.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM103.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM104.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM105.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM106.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM107.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM108.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM109.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM110.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM111.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM112.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM113.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM114.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM115.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM116.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM117.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM118.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM119.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM120.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM121.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM122.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM123.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM124.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM125.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM126.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM127.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM128.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM129.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM130.json"
-          },
-          {
-            "url": "./data/index/L0_GEOM131.json"
           }
         ]
       }
@@ -440,6 +74,542 @@
     {
       "type": "layer",
       "id": 1,
+      "properties": {
+        "name": "day0826",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 825087
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L1_GEOM0.json"
+          },
+          {
+            "url": "./data/index/L1_GEOM1.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 2,
+      "properties": {
+        "name": "day0827",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 825087
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L2_GEOM0.json"
+          },
+          {
+            "url": "./data/index/L2_GEOM1.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 3,
+      "properties": {
+        "name": "day0828",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 825087
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L3_GEOM0.json"
+          },
+          {
+            "url": "./data/index/L3_GEOM1.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 4,
+      "properties": {
+        "name": "day0829",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 825087
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L4_GEOM0.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 5,
+      "properties": {
+        "name": "day0830",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          },
+          {
+            "type": 0,
+            "c": 825087
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L5_GEOM0.json"
+          },
+          {
+            "url": "./data/index/L5_GEOM1.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 6,
+      "properties": {
+        "name": "day0831",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 825087
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L6_GEOM0.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 7,
+      "properties": {
+        "name": "day0901",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          },
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 0,
+            "c": 825087
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L7_GEOM0.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 8,
+      "properties": {
+        "name": "day0902",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 0,
+            "c": 825087
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L8_GEOM0.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 9,
+      "properties": {
+        "name": "day0903",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 825087
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L9_GEOM0.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 10,
+      "properties": {
+        "name": "day0904",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 6405119
+          },
+          {
+            "type": 0,
+            "c": 825087
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L10_GEOM0.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 11,
+      "properties": {
+        "name": "day0905",
+        "queryable": 1,
+        "visible": true,
+        "type": "polygon",
+        "objType": "Extruded"
+      },
+      "data": {
+        "materials": [
+          {
+            "type": 0,
+            "c": 14873599
+          },
+          {
+            "type": 2,
+            "c": 2302755
+          },
+          {
+            "type": 0,
+            "c": 3647999
+          },
+          {
+            "type": 0,
+            "c": 9228031
+          },
+          {
+            "type": 0,
+            "c": 12050943
+          },
+          {
+            "type": 0,
+            "c": 825087
+          }
+        ],
+        "blocks": [
+          {
+            "url": "./data/index/L11_GEOM0.json"
+          }
+        ]
+      }
+    },
+    {
+      "type": "layer",
+      "id": 15,
       "properties": {
         "name": "Flat Plane",
         "queryable": 1,
@@ -450,15 +620,15 @@
       "data": [
         {
           "type": "block",
-          "layer": 1,
+          "layer": 15,
           "block": 0,
           "grid": {
             "width": 2,
             "height": 2,
-            "url": "./data/index/L1_DEM0.bin"
+            "url": "./data/index/L12_DEM0.bin"
           },
           "width": 100.0,
-          "height": 58.57142857142857,
+          "height": 65.5323819978046,
           "translate": [
             0.0,
             0.0,
@@ -467,7 +637,7 @@
           "material": {
             "type": 0,
             "image": {
-              "url": "./data/index/L1_IMG0.png"
+              "url": "./data/index/L12_IMG0.png"
             },
             "ds": 1
           },

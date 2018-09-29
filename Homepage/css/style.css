@@ -119,7 +119,9 @@ body {
 #box1 {
     background-image:url(../image/map1.png);
     background-size:100% 100%;
-    
 }
 
-#box2 {}
+#box2 {
+	background-image:url(../image/map2.png);
+    background-size:100% 100%;
+}

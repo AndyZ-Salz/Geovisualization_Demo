@@ -1,11 +1,102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title></title>
+    <head>
+        <meta charset="utf-8">
+        <title>Sentiment of tweets of Hurricane Harvey</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes"> 
+        <link rel="stylesheet" href="css/common.css">
+        <link rel="stylesheet" href="css/maptalks.css">
+    </head>
+    <body>
+        <div id="main"></div>
+        <script src="js/echarts.min.js"></script>
+        <script src="js/echarts-gl.js"></script>
+        <script src="js/maptalks.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/commonUI.js"></script>
+        <script>
+            var chart = echarts.init(document.getElementById('main')); // initialize chart
+			
+			//load json file
+            $.getJSON('data/hurricane.json', function (data) {
+			//filter sentiment data 
+                data = data.filter(function (dataItem) {
+                    return dataItem[2] > 0;
+                }).map(function (dataItem) {
+                    return [dataItem[0], dataItem[1], dataItem[2]];
+                });
 
-</head>
-<body>
-	It's map2
-</body>
+                chart.setOption({
+                	//initialize visualmap and setting values
+                    visualMap: {
+                        show: true,
+                        max: 10,
+                        calculable: true,
+                        realtime: false,
+                        inRange: {
+							color: ['blue','yellow','red']
+                        },
+                        outOfRange: {
+                            colorAlpha: 0
+                        }
+                    },
+                    //initialize maptalks3D and setting values
+                    maptalks3D: {
+                        center: [-95.44703,29.71145],
+                        zoom: 9,
+                        pitch: 50,
+                        bearing: -10,
+                        baseLayer: {
+                            'urlTemplate': 'http://a.tiles.mapbox.com/v3/spatialdev.map-c9z2cyef/{z}/{x}/{y}.png',
+                            'subdomains': ['a', 'b', 'c', 'd']
+                        },
+                        boxHeight: 20,
+			              postEffect: {
+                            enable: true,
+                            screenSpaceAmbientOcclusion: {
+                                enable: true,
+                                radius: 2
+                            }
+//                          FXAA: {
+//                              enable: true
+//                          }
+                        },
+                        light: {
+                            main: {
+                                intensity: 2,
+                                shadow: true,
+                                shadowQuality: 'high'
+                            },
+                            ambient: {
+                                intensity: 0.
+                            },
+                            ambientCubemap: {
+                                texture: 'img/canyon.hdr',
+                                exposure: 2,
+                                diffuseIntensity: 0.5
+                            }
+                        }
+                    },
+                    
+                    //initialize series( Specify the configuration items and data of the chart)
+                    series: [{
+                        type: 'bar3D',
+                        coordinateSystem: 'maptalks3D',
+                        shading: 'lambert',
+                        minHeight: 0.1,
+                        barSize: 0.1,
+                        data: data,
+                        silent: true,
+                        animationEasingUpdate: 2000
+                    }]
+                });
+            });
+
+            window.addEventListener('resize', function () {
+                chart.resize();
+            });
+
+        </script>
+    </body>
 </html>

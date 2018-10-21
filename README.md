@@ -1,15 +1,17 @@
 
-# Geovisualization of Time Series Social Media Data for a Hurricane
-Final project for IP project 2018S
+# Geovisualization Demo
+	Part1: project for IP project 2018S
+	Part2: project for Geovisualization 2017W
 
 ## Coder
 homepage & map1: Kaiyue Zang   
 map2: Xiao Zhang
+map3: 
 
 ## Entry
 https://andyz-salz.github.io/Geovisualization_Demo/Homepage/index.html
 
-## Note from Kaiyue Zang
+## Map1
 **Data Set:** "filtered_hurricane_harvey_15"  offered by *Dr. Bernd Resch*      
 **Data Base:** Postgres with PostGIS   
 **Data Release:** GeoServer

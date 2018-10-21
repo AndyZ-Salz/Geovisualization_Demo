@@ -7,7 +7,7 @@ homepage & map1: Kaiyue Zang
 map2: Xiao Zhang
 
 ## Entry
-https://andyz-salz.github.io/PLUS_IP_Final_K.Z_X.Z/Homepage/index.html
+https://andyz-salz.github.io/Geovisualization_Demo/Homepage/index.html
 
 ## Note from Kaiyue Zang
 **Data Set:** "filtered_hurricane_harvey_15"  offered by *Dr. Bernd Resch*      

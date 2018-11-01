@@ -6,7 +6,7 @@
 ## Coder
 homepage & map1: Kaiyue Zang   
 map2: Xiao Zhang  
-map3: Jiemin Zhou & Yiwen Liu & Kaiyue Zang 
+map3: Jiemin Zhou & Yiwen Liu & Kaiyue Zang  
 map4: Kaiyue Zang     
 
 ## Entry

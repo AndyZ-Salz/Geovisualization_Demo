@@ -7,6 +7,7 @@ Greater Houston area hurricane related Tweets
 Kaiyue Zang
 
 ## Brief
+A visualization of tweets
 
 ## How to use
 

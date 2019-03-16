@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blank</title>
+    <script src='https:///api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='https:///api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
+
+
+
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+
+</head>
+<body>
+<div id='map'></div>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXphbmctc2FseiIsImEiOiJjamNmMTFnY3YweTdnMzNyd3N0dmJvN3BmIn0.IjY9YwmRWtL8axbT4AzQRg';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/light-v9',//TODO 换成自己的底图
+        maxZoom: 14.99,
+        minZoom: 11,
+        zoom: 11.9,
+        center: [118.76, 32.06]
+    });
+
+    // map.on('load',function () {})
+
+</script>
+
+</body>
+</html>

@@ -2,35 +2,601 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Blank</title>
-    <script src='https:///api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
-    <link href='https:///api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
+    <title>Road WaterLogging</title>
+    <script src='http://47.100.122.244:9999/mapbox-gl-js/v0.53.0/mapbox-gl.js'></script>
+    <link href='http://47.100.122.244:9999/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet'/>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="http://47.100.122.244:9999/jquery-ui/1.12.1/jquery-ui.js"></script>
+    <link href="http://47.100.122.244:9999/jquery-ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <script src='http://47.100.122.244:9999/mapbox-gl-js/plugins/mapbox-gl-language/v0.10.0/mapbox-gl-language.js'></script>
+    <script src="legendText.js"></script>
+    <script src="granularityText.js"></script>
 
 
-
+    <!--整体样式-->
     <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
+
+    <!--边栏样式-->
+    <style>
+
+        .map-overlay {
+            font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+            position: absolute;
+            padding: 10px;
+        }
+
+        .right {
+            width: 18%;
+            bottom: 0;
+            right: 0;
+        }
+
+        .left {
+            width: 20%;
+            top: 0;
+            left: 0;
+        }
+
+        .map-overlay .map-overlay-inner {
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.20);
+            border-radius: 3px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .map-overlay h2 {
+            line-height: 24px;
+            display: block;
+            margin: 0 0 10px;
+        }
+
+
+        .slider {
+            margin: 0 10% 0 10%;
+            width: 80%;
+        }
+
+        .selectable .ui-selecting {
+            background: #666666;
+        }
+
+        .selectable .ui-selected {
+            background: #aaaaaa;
+            color: white;
+        }
+
+        .selectable {
+            list-style-type: none;
+            margin: 0 0 0 10%;
+            padding: 0;
+            width: 80%;
+        }
+
+        .selectable li {
+            margin: 3px;
+            padding: 2px;
+            font-size: 12pt;
+            /*height: 50px;*/
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 10pt;
+        }
+
+        #style {
+            margin: 0 0 0 10%;
+            width: 80%;
+            /*height: 25px;*/
+            -webkit-appearance: none;
+        }
+
+
+    </style>
+
 
 </head>
 <body>
+
 <div id='map'></div>
 
+
+<!--左边栏-->
+<div class='map-overlay left'>
+    <div class='map-overlay-inner'>
+        <label>配色方案</label>
+        <div>
+            <ol id="selectableLegend" class="selectable">
+                <li class="ui-widget-content" id="defaultColor">
+                    <table width="80%">
+                        <tr>
+                            <td>方案1</td>
+                            <td style="width:15px;background-color:rgb(44,212,53);"></td>
+                            <td style="width:15px;background-color:rgb(48,102,255);"></td>
+                            <td style="width:15px;background-color:rgb(255,255,0);"></td>
+                            <td style="width:15px;background-color:rgb(254,154,0);"></td>
+                            <td style="width:15px;background-color:rgb(218,41,37);"></td>
+                        </tr>
+                    </table>
+                </li>
+                <li class="ui-widget-content">
+                    <table width="80%">
+                        <tr>
+                            <td>方案2</td>
+                            <td style="width:15px;background-color:rgb(199,230,242);"></td>
+                            <td style="width:15px;background-color:rgb(84,197,237);"></td>
+                            <td style="width:15px;background-color:rgb(37,138,206);"></td>
+                            <td style="width:15px;background-color:rgb(0,61,135);"></td>
+                            <td style="width:15px;background-color:rgb(0,7,68);"></td>
+                        </tr>
+                    </table>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class='map-overlay-inner'>
+        <label>空间粒度方案</label>
+        <div>
+            <ol id="selectableGranularity" class="selectable">
+                <li class="ui-widget-content">仅划分路段</li>
+                <li class="ui-widget-content" id="defaultGranularity">较粗粒度</li>
+                <li class="ui-widget-content">较细粒度</li>
+            </ol>
+        </div>
+    </div>
+    <div class='map-overlay-inner'>
+        <label>时间范围</label>
+        <label id='timeRange'>0% - 100%</label>
+        <div id="slider2" class="slider"></div>
+        <label>播放速度</label>
+        <label id='animateSpeed'>1000ms</label>
+        <div id="slider3" class="slider"></div>
+    </div>
+    <div class='map-overlay-inner'>
+        <button id="ReSetting" onclick=ReSetting();>应用新设定</button>
+        ←只有点此按钮才会使上述修改生效
+    </div>
+    <div class='map-overlay-inner'>
+        <label for="style">参数设定信息（请复制以下文本）↓</label><br/>
+        <textarea id="style" rows="" cols="" readonly></textarea>
+    </div>
+</div>
+
+<!--右边栏-->
+
+<div class='map-overlay right'>
+    <div class='map-overlay-inner'>
+        <h2>道路积水预警可视化平台</h2>
+        <div>本页面通过模拟一次南京市百年一遇级别的城市内涝过程，展现了主城区部分地区的道路积水情况</div>
+    </div>
+    <div class='map-overlay-inner'>
+        <div id='position'>
+            Loading......
+            加载中，请稍等...
+        </div>
+    </div>
+    <div class='map-overlay-inner'>
+        <div id='legend' class='legend'>
+            legend here
+        </div>
+    </div>
+    <div class='map-overlay-inner'>
+        <label id='slider1Label'>Time Slider label</label>
+        <div id="slider1" class="slider"></div>
+    </div>
+
+    <div class='map-overlay-inner'>
+        <button id="startButton" onclick=start();>开始</button>
+        <button id="stopButton" onclick=stop(); disabled>暂停</button>
+    </div>
+</div>
+
+
 <script>
+
+    //左侧时间范围
+    $(function () {
+        $("#slider2").slider(
+            {
+                range: true,
+                min: 0,
+                max: 10,
+                step: 1,
+                values: [0, 10],
+                slide: function (event, ui) {
+                    $("#timeRange").text(ui.values[0] + "0% - " + ui.values[1] + "0%");
+                }
+            }
+        );
+        $("#slider3").slider(
+            {
+                min: 100,
+                max: 3000,
+                value: 1000,
+                slide: function (event, ui) {
+                    $("#animateSpeed").text(ui.value + "ms");
+                }
+            }
+        );
+    });
+
+    //配色方案选择器
+    var LegendIndex;
+    $(function () {
+        $("#selectableLegend").selectable({
+            create: function (event, ui) {
+                $("#defaultColor").addClass("ui-selected");
+            },
+            selected: function (event, ui) {
+                LegendIndex = $("#selectableLegend li").index(ui.selected) + 1;
+            }
+        });
+    });
+
+
+    //粒度选择器
+    var GranularityIndex;
+    $(function () {
+        $("#selectableGranularity").selectable({
+            create: function (event, ui) {
+                $("#defaultGranularity").addClass("ui-selected");
+            },
+            selected: function (event, ui) {
+                GranularityIndex = $("#selectableGranularity li").index(ui.selected) + 1;
+            }
+        });
+    });
+
+
+    var SettingList =
+        {
+            "lengend": 1,
+            "granularity": 2,
+            "timeRange": [0, 10],
+            "animateSpeed": 1000
+        };
+
+    function ReSetting() {
+        if (LegendIndex == null)
+            LegendIndex = 1;
+        SettingList["lengend"] = LegendIndex;
+
+        if (GranularityIndex == null)
+            GranularityIndex = 2;
+        SettingList["granularity"] = GranularityIndex;
+        SettingList["timeRange"] = $("#slider2").slider("values");
+        SettingList["animateSpeed"] = $("#slider3").slider("value");
+
+
+        if (interval != null) {//判断计时器是否为空
+            clearInterval(interval);
+            interval = setInterval(overs, SettingList["animateSpeed"]);//重新设定
+        }
+
+        MoveEvent();//刷新粒度说明文字
+
+        $("#style").val(JSON.stringify(SettingList));
+        Setting1(true);
+        Setting2();
+
+    }
+
+
+    var LayersIds = [
+        "Roads_Water_RS",
+        "Roads_Water_500m",
+        "Roads_Water_200m",
+        "Roads_Water_100m",
+        "Roads_Water_50m"
+    ];
+
+
+    function Setting1(re) {
+
+        setLegend(SettingList["lengend"]);
+        setTimeSlider(SettingList["timeRange"],re);
+        $("#style").val(JSON.stringify(SettingList));
+
+    }
+
+    function Setting2() {
+
+        var color = getColor(SettingList["lengend"]);
+
+        for (var i in LayersIds) {
+            //set Color
+            map.setPaintProperty(LayersIds[i], "line-color", color);
+
+            //set ZoomRange (粒度切换)
+            var range = getLayerRange(LayersIds[i], SettingList["granularity"]);
+            map.setLayerZoomRange(LayersIds[i], range[0], range[1]);
+
+
+        }
+
+    }
+
+
+    //各种参数设定及初始化
+    Setting1(false);
+
+
+    // 时间进度条
+    function setTimeSlider(timeRange,re) {
+        var Value = 0;
+
+        if (re)
+            var currentValue = $("#slider1").slider('value');
+            if (currentValue >= timeRange[0] && currentValue<= timeRange[1])
+                Value = currentValue;
+
+
+        $("#slider1").slider(
+            {
+                range: "min",
+                min: timeRange[0],
+                max: timeRange[1],
+                value: Value,
+                slide: refreshSwatch,
+                change: refreshSwatch
+            }
+        );
+    }
+
+    //绘制图例
+    function setLegend(lengendIndex) {
+        if (lengendIndex === 1)
+            $("#legend").html(LagendTable1);
+        else
+            $("#legend").html(LagendTable2);
+
+    }
+
+    function getColor(lengendIndex) {
+        if (lengendIndex === 1)
+            return ColorbyLagendTable1;
+        else
+            return ColorbyLagendTable2;
+    }
+
+    function getLayerRange(layerId, granIndex) {
+        if (granIndex === 1)
+            return Granularity1[layerId];
+        else if (granIndex === 2)
+            return Granularity2[layerId];
+        else
+            return Granularity3[layerId];
+    }
+
+    function getWidth(zoomLevel){
+        if (zoomLevel <= 12.5)
+            return LineLevelWidth1;
+        else if (zoomLevel <= 14)
+            return LineLevelWidth2;
+        else
+            return LineLevelWidth3;
+
+    }
+
+    // 加载地图
     mapboxgl.accessToken = 'pk.eyJ1IjoiYW5keXphbmctc2FseiIsImEiOiJjamNmMTFnY3YweTdnMzNyd3N0dmJvN3BmIn0.IjY9YwmRWtL8axbT4AzQRg';
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/light-v9',//TODO 换成自己的底图
-        maxZoom: 14.99,
+        maxZoom: 15.5,
         minZoom: 11,
-        zoom: 11.9,
+        zoom: 12,
         center: [118.76, 32.06]
     });
 
-    // map.on('load',function () {})
+
+    // 控制台
+    map.addControl(new MapboxLanguage());//语言
+
+    map.addControl(new mapboxgl.NavigationControl());//导航控制
+
+    var scale = new mapboxgl.ScaleControl({
+        maxWidth: 80,
+        unit: 'imperial'
+    });
+    map.addControl(scale);
+    scale.setUnit('metric');//比例尺
+
+
+    // 加载地图数据
+    map.on('load', function () {
+        //RS
+        map.addSource('Roads_Water_RS', {
+            'type': 'vector',
+            'scheme': 'tms',
+            'tiles': ['http://47.100.122.244:8080/geoserver/gwc/service/tms/1.0.0/Thesis%3ARoads_Water_RS@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf']
+        });
+
+        map.addLayer({
+            "id": "Roads_Water_RS",
+            "source": 'Roads_Water_RS',
+            "source-layer": 'Roads_Water_RS',
+            "type": "line",
+            "paint": {
+                // "line-color": getColor(SettingList["lengend"]),
+                "line-width": LineLevelWidth1
+            }
+        });
+        //500m
+        map.addSource('Roads_Water_500m', {
+            'type': 'vector',
+            'scheme': 'tms',
+            'tiles': ['http://47.100.122.244:8080/geoserver/gwc/service/tms/1.0.0/Thesis%3ARoads_Water_500m@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf']
+        });
+
+        map.addLayer({
+            "id": "Roads_Water_500m",
+            "source": 'Roads_Water_500m',
+            "source-layer": 'Roads_Water_500m',
+            "type": "line",
+            "paint": {
+                // "line-color": getColor(SettingList["lengend"]),
+                "line-width": LineLevelWidth1
+            }
+        });
+        //200m
+        map.addSource('Roads_Water_200m', {
+            'type': 'vector',
+            'scheme': 'tms',
+            'tiles': ['http://47.100.122.244:8080/geoserver/gwc/service/tms/1.0.0/Thesis%3ARoads_Water_200m@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf']
+        });
+
+        map.addLayer({
+            "id": "Roads_Water_200m",
+            "source": 'Roads_Water_200m',
+            "source-layer": 'Roads_Water_200m',
+            "type": "line",
+            "paint": {
+                // "line-color": getColor(SettingList["lengend"]),
+                "line-width": LineLevelWidth1
+            }
+        });
+        //100m
+        map.addSource('Roads_Water_100m', {
+            'type': 'vector',
+            'scheme': 'tms',
+            'tiles': ['http://47.100.122.244:8080/geoserver/gwc/service/tms/1.0.0/Thesis%3ARoads_Water_100m@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf']
+        });
+
+        map.addLayer({
+            "id": "Roads_Water_100m",
+            "source": 'Roads_Water_100m',
+            "source-layer": 'Roads_Water_100m',
+            "type": "line",
+            "paint": {
+                // "line-color": getColor(SettingList["lengend"]),
+                "line-width": LineLevelWidth1
+            }
+        });
+        //50m
+        map.addSource('Roads_Water_50m', {
+            'type': 'vector',
+            'scheme': 'tms',
+            'tiles': ['http://47.100.122.244:8080/geoserver/gwc/service/tms/1.0.0/Thesis%3ARoads_Water_50m@EPSG%3A900913@pbf/{z}/{x}/{y}.pbf']
+        });
+
+        map.addLayer({
+            "id": "Roads_Water_50m",
+            "source": 'Roads_Water_50m',
+            "source-layer": 'Roads_Water_50m',
+            "type": "line",
+            "paint": {
+                // "line-color": getColor(SettingList["lengend"]),
+                "line-width": LineLevelWidth1
+            }
+        });
+
+
+        //TODO 注记图层
+        // var labelurl = "https://api.mapbox.com/styles/v1/andyzang-salz/cjtoimj710dcs1flfqufy6bga/wmts?access_token=pk.eyJ1IjoiYW5keXphbmctc2FseiIsImEiOiJjamNmMTFnY3YweTdnMzNyd3N0dmJvN3BmIn0.IjY9YwmRWtL8axbT4AzQRg";
+        //
+        // map.addSource('label',{
+        //
+        // });
+
+        Setting2();//设定配色方案
+        MoveEvent();
+        filterDataBy($("#slider1").slider("option", "min"));
+
+    });
+
+
+    function MoveEvent() {
+        var mapZoom = map.getZoom().toFixed(2);
+        var mapPosition = map.getCenter();
+        var lon = mapPosition.lng.toFixed(4);
+        var lat = mapPosition.lat.toFixed(4);
+        var layerNow = activeGranularity(mapZoom);
+
+        for (var i in LayersIds) {
+            // set Color
+            map.setPaintProperty(LayersIds[i], "line-width", getWidth(mapZoom));
+        }
+
+
+        var positionStr = "<table><tr><td>经度:</td><td>" + lon + "</td></tr><tr><td>纬度:</td><td>" + lat + "</td></tr><tr><td>缩放级别:</td><td>" + mapZoom + "</td></tr><tr><td>当前空间粒度:</td><td>" + layerNow + "</td></tr></table>";
+
+        $("#position").html(positionStr);
+    }
+
+    map.on("moveend", MoveEvent);
+
+
+    //时间轴事件
+    function filterDataBy(timeIndex) {
+
+        var filters = ['==', 'timeindex', timeIndex];
+        for (var i in LayersIds) {
+            map.setFilter(LayersIds[i], filters);
+        }
+        // Set the label
+        //TODO     function getLabelName(index) {}
+        var label = timeIndex + "0%";
+        $("#slider1Label").text(label);
+    }
+
+    function refreshSwatch() {
+        var index = $("#slider1").slider("value");
+
+        // map.getSource("flood").updateImage({url: getPath(index)}); TODO
+        filterDataBy(index);
+    }
+
+
+    // set animate
+    var interval = null;//计时器
+
+    function start() {//启动计时器函数
+        $("#startButton").attr("disabled", "disabled");
+        $("#stopButton").removeAttr("disabled");
+        if (interval != null) {//判断计时器是否为空
+            clearInterval(interval);
+            interval = null;
+        }
+        interval = setInterval(overs, SettingList["animateSpeed"]);//启动计时器，调用overs函数，
+    }
+
+    function overs() {
+        var currentIndex = $("#slider1").slider("value");
+        var max = $("#slider1").slider("option", "max");
+        var min = $("#slider1").slider("option", "min");
+        var index = currentIndex + 1;
+        if (index > max)
+            index = min;
+        filterDataBy(index);
+        $("#slider1").slider("value", index);
+
+    }
+
+    function stop() {
+        clearInterval(interval);
+        interval = null;
+        $("#stopButton").attr("disabled", "disabled");
+        $("#startButton").removeAttr("disabled");
+    }
+
 
 </script>
+
 
 </body>
 </html>
